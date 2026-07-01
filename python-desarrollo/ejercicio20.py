@@ -8,8 +8,18 @@ import requests
 # 3. Si ocurre cualquier excepción, imprima:
 #    "Error al obtener el post"
 
+API_URL = "https://jsonplaceholder.typicode.com/posts/1"
+ERROR_MESSAGE = "Error al obtener el post"
+
 def obtener_post():
-    # TODO: tu código aquí
-    pass
+    try:
+        response = requests.get(API_URL)
+        if response.status_code == 200:
+            post = response.json()
+            print(f"Título: {post['title']}")
+        else:
+            print(ERROR_MESSAGE)
+    except Exception:
+        print(ERROR_MESSAGE)
 
 obtener_post()
