@@ -13,3 +13,11 @@
 -- de su propio departamento.
 -- Ordena por salario de forma descendente.
 /* tu código aquí */
+SELECT nombre, salario
+FROM empleados e
+WHERE salario > (
+	SELECT AVG(salario)
+	FROM empleados
+	WHERE departamento = e.departamento
+)
+ORDER BY salario DESC;
